@@ -1,0 +1,1 @@
+export './src/flat_button.dart';
