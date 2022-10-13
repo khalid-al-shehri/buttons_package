@@ -1,7 +1,7 @@
-import 'package:buttons/src/widgets/column.dart';
-import 'package:buttons/src/widgets/scaffold.dart';
-import 'package:buttons/src/widgets/text.dart';
-import 'package:buttons/src/widgets/text_button.dart';
+import 'package:ssr_package/src/widgets/column.dart';
+import 'package:ssr_package/src/widgets/scaffold.dart';
+import 'package:ssr_package/src/widgets/text.dart';
+import 'package:ssr_package/src/widgets/text_button.dart';
 import 'package:flutter/material.dart';
 
 class Generator{

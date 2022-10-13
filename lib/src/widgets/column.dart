@@ -1,4 +1,4 @@
-import 'package:buttons/src/generator.dart';
+import 'package:ssr_package/src/generator.dart';
 import 'package:flutter/material.dart';
 
 class GenerateColumn extends StatefulWidget {
@@ -13,7 +13,9 @@ class GenerateColumn extends StatefulWidget {
 class _GenerateColumnState extends State<GenerateColumn> {
   List<Map<String, dynamic>>? _children;
 
-  _GenerateColumnState() {
+  @override
+  initState(){
+    super.initState();
     _children = widget.json["children"];
   }
 
@@ -24,7 +26,7 @@ class _GenerateColumnState extends State<GenerateColumn> {
         children: List.generate(
           _children!.length,
               (index) {
-            return Generator.generateWidget(_children![index]) ?? SizedBox();
+            return Generator.generateWidget(_children![index]);
           },
         ),
       );

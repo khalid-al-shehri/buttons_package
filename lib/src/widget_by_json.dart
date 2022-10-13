@@ -1,4 +1,4 @@
-import 'package:buttons/src/generator.dart';
+import 'package:ssr_package/src/generator.dart';
 import 'package:flutter/material.dart';
 
 class WidgetByJson extends StatelessWidget {

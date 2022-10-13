@@ -1,4 +1,4 @@
-import 'package:buttons/src/generator.dart';
+import 'package:ssr_package/src/generator.dart';
 import 'package:flutter/material.dart';
 
 class GenerateScaffold extends StatefulWidget {
@@ -18,10 +18,11 @@ class _GenerateScaffoldState extends State<GenerateScaffold> {
 
   String? _appBarTitle;
 
-  _GenerateScaffoldState(){
+  @override
+  initState(){
+    super.initState();
     _args = widget.json["args"];
     _child = widget.json["child"];
-
 
     checkAppBar(_args);
   }

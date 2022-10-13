@@ -1,4 +1,4 @@
-import 'package:buttons/src/generator.dart';
+import 'package:ssr_package/src/generator.dart';
 import 'package:flutter/material.dart';
 
 class GenerateText extends StatefulWidget {
@@ -18,7 +18,9 @@ class _GenerateTextState extends State<GenerateText> {
 
   String _text = "";
 
-  _GenerateTextState(){
+  @override
+  initState(){
+    super.initState();
     _args = widget.json["args"];
     _child = widget.json["child"];
 
