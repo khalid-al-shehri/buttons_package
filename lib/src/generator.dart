@@ -1,3 +1,4 @@
+import 'package:ssr_package/src/widgets/center.dart';
 import 'package:ssr_package/src/widgets/column.dart';
 import 'package:ssr_package/src/widgets/scaffold.dart';
 import 'package:ssr_package/src/widgets/text.dart';
@@ -27,6 +28,11 @@ class Generator{
       }
       else if(type == "text_button"){
         return GenerateTextButton(
+          json: json,
+        );
+      }
+      else if(type == "center"){
+        return GenerateCenter(
           json: json,
         );
       }

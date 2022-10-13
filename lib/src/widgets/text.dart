@@ -18,9 +18,7 @@ class _GenerateTextState extends State<GenerateText> {
 
   String _text = "";
 
-  @override
-  initState(){
-    super.initState();
+  _fetchValues(){
     _args = widget.json["args"];
     _child = widget.json["child"];
 
@@ -40,6 +38,7 @@ class _GenerateTextState extends State<GenerateText> {
 
   @override
   Widget build(BuildContext context) {
+    _fetchValues();
     return Text(
       _text
     );

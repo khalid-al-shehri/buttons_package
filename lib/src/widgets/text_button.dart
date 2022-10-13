@@ -17,9 +17,7 @@ class _GenerateTextButtonState extends State<GenerateTextButton> {
   String _text = "";
   String? _print;
 
-  @override
-  initState(){
-    super.initState();
+  _fetchValues(){
     _args = widget.json["args"];
 
     checkText(_args);
@@ -50,6 +48,8 @@ class _GenerateTextButtonState extends State<GenerateTextButton> {
 
   @override
   Widget build(BuildContext context) {
+    _fetchValues();
+
     return TextButton(
       onPressed: _print != null ? (){
         debugPrint(_print);

@@ -11,18 +11,32 @@ class GenerateColumn extends StatefulWidget {
 }
 
 class _GenerateColumnState extends State<GenerateColumn> {
-  List<Map<String, dynamic>>? _children;
+  List<dynamic>? _children;
+  Map<String, dynamic>? _args;
+  bool top = true;
+  bool bottom = false;
+  bool center = false;
 
-  @override
-  initState(){
-    super.initState();
-    _children = widget.json["children"];
+  _fetchValues(){
+    setState(() {
+      _children = widget.json["children"];
+      _args = widget.json["args"];
+    });
+
+
+  }
+
+  _getMainAlignment(Map<String, dynamic> ){
+
   }
 
   @override
   Widget build(BuildContext context) {
+    _fetchValues();
+
     if(_children != null){
       return Column(
+        mainAxisAlignment: ,
         children: List.generate(
           _children!.length,
               (index) {

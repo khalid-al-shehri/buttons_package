@@ -18,9 +18,7 @@ class _GenerateScaffoldState extends State<GenerateScaffold> {
 
   String? _appBarTitle;
 
-  @override
-  initState(){
-    super.initState();
+  _fetchValues(){
     _args = widget.json["args"];
     _child = widget.json["child"];
 
@@ -40,6 +38,8 @@ class _GenerateScaffoldState extends State<GenerateScaffold> {
 
   @override
   Widget build(BuildContext context) {
+    _fetchValues();
+
     return Scaffold(
       appBar: _appBarTitle != null
           ?
