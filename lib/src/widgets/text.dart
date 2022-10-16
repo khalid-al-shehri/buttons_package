@@ -1,11 +1,12 @@
 import 'package:ssr_package/src/generator.dart';
 import 'package:flutter/material.dart';
+import 'package:ssr_package/src/models/UI_model.dart';
 
 class GenerateText extends StatefulWidget {
 
-  final Map<String, dynamic> json;
+  final UIModel uiModel;
 
-  const GenerateText({Key? key, required this.json}) : super(key: key);
+  const GenerateText(this.uiModel, {Key? key}) : super(key: key);
 
   @override
   State<GenerateText> createState() => _GenerateTextState();
@@ -13,26 +14,22 @@ class GenerateText extends StatefulWidget {
 
 class _GenerateTextState extends State<GenerateText> {
 
-  Map<String, dynamic>? _child;
-  Map<String, dynamic>? _args;
+  Args? _args;
 
-  String _text = "";
+  String? _text;
 
   _fetchValues(){
-    _args = widget.json["args"];
-    _child = widget.json["child"];
+    _args = widget.uiModel.args;
 
     checkText(_args);
   }
 
-  checkText(Map<String, dynamic>? args){
+  checkText(Args? args){
     if(args != null){
       // Text
-      if(args.containsKey("text")){
-        setState(() {
-          _text = args["text"];
-        });
-      }
+      setState(() {
+        _text = args.text;
+      });
     }
   }
 
@@ -40,7 +37,7 @@ class _GenerateTextState extends State<GenerateText> {
   Widget build(BuildContext context) {
     _fetchValues();
     return Text(
-      _text
+      _text ?? ""
     );
   }
 }

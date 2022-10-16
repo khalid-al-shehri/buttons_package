@@ -1,48 +1,45 @@
 import 'package:ssr_package/src/generator.dart';
 import 'package:flutter/material.dart';
+import 'package:ssr_package/src/models/UI_model.dart';
 
 class GenerateTextButton extends StatefulWidget {
 
-  final Map<String, dynamic> json;
+  final UIModel uiModel;
 
-  const GenerateTextButton({Key? key, required this.json}) : super(key: key);
+  const GenerateTextButton(this.uiModel, {Key? key}) : super(key: key);
 
   @override
   State<GenerateTextButton> createState() => _GenerateTextButtonState();
 }
 
 class _GenerateTextButtonState extends State<GenerateTextButton> {
-  Map<String, dynamic>? _args;
+  Args? _args;
 
   String _text = "";
   String? _print;
 
   _fetchValues(){
-    _args = widget.json["args"];
+    _args = widget.uiModel.args;
 
     checkText(_args);
     checkOnPressed(_args);
   }
 
-  checkText(Map<String, dynamic>? args){
+  checkText(Args? args){
     if(args != null){
       // Text
-      if(args.containsKey("title")){
-        setState(() {
-          _text = args["title"];
-        });
-      }
+      setState(() {
+        _text = args.title ?? "";
+      });
     }
   }
 
-  checkOnPressed(Map<String, dynamic>? args){
+  checkOnPressed(Args? args){
     if(args != null){
       // onPressed
-      if(args.containsKey("onPressed")){
-        setState(() {
-          _print = args["onPressed"]["print"];
-        });
-      }
+      setState(() {
+        _print = args.onPressed?.print;
+      });
     }
   }
 

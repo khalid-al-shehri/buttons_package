@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:ssr_package/ssr_package.dart';
+import 'package:ssr_package/src/models/UI_model.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
@@ -40,12 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
   );
 
   late String data;
-  Map<String, dynamic> _json = {
+  late UIModel uiModel;
+  final Map<String, dynamic> _json = {
     "type": "center",
     "child": {
       "type": "column",
       "args":{
-        "center": true
+        "main_alignment": "center",
+        "cross_alignment": "center"
       },
       "children": [
         {
@@ -73,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
       if(socketData.toString().contains("scaffold")){
         setState(() {
           data = socketData.toString();
-          _json = json.decode(data);
+          uiModel = UIModel.fromJson(json.decode(data));
         });
       }
     });
@@ -82,7 +85,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    initialUI();
     filterData();
+  }
+
+  initialUI(){
+    setState(() {
+      uiModel = UIModel.fromJson(_json);
+    });
   }
 
   @override
@@ -90,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Material(
       child: Stack(
         children: [
-          WidgetByJson(json: _json),
+          WidgetByJson(uiModel),
         ],
       )
     );

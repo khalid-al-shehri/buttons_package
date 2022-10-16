@@ -1,32 +1,31 @@
 import 'package:ssr_package/src/generator.dart';
 import 'package:flutter/material.dart';
+import 'package:ssr_package/src/models/UI_model.dart';
+
+import '../utiles/enums.dart';
 
 class GenerateColumn extends StatefulWidget {
-  final Map<String, dynamic> json;
+  final UIModel uiModel;
 
-  const GenerateColumn({Key? key, required this.json}) : super(key: key);
+  const GenerateColumn(this.uiModel, {Key? key}) : super(key: key);
 
   @override
   State<GenerateColumn> createState() => _GenerateColumnState();
 }
 
 class _GenerateColumnState extends State<GenerateColumn> {
-  List<dynamic>? _children;
-  Map<String, dynamic>? _args;
+  List<UIModel>? _children;
+  Args? _args;
   bool top = true;
   bool bottom = false;
   bool center = false;
 
   _fetchValues(){
     setState(() {
-      _children = widget.json["children"];
-      _args = widget.json["args"];
+      _children = widget.uiModel.children;
+      _args = widget.uiModel.args;
     });
 
-
-  }
-
-  _getMainAlignment(Map<String, dynamic> ){
 
   }
 
@@ -36,7 +35,8 @@ class _GenerateColumnState extends State<GenerateColumn> {
 
     if(_children != null){
       return Column(
-        mainAxisAlignment: ,
+        mainAxisAlignment: parseMainAlignment(_args?.mainAlignment),
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: List.generate(
           _children!.length,
               (index) {

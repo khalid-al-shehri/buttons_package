@@ -1,22 +1,23 @@
 import 'package:ssr_package/src/generator.dart';
 import 'package:flutter/material.dart';
+import 'package:ssr_package/src/models/UI_model.dart';
 
 class GenerateCenter extends StatefulWidget {
-  final Map<String, dynamic> json;
+  final UIModel model;
 
-  const GenerateCenter({Key? key, required this.json}) : super(key: key);
+  const GenerateCenter(this.model, {Key? key}) : super(key: key);
 
   @override
   State<GenerateCenter> createState() => _GenerateCenterState();
 }
 
 class _GenerateCenterState extends State<GenerateCenter> {
-  Map<String, dynamic>? _child;
+  UIModel? _child;
 
   _fetchValues(){
     setState(() {
       try{
-        _child = widget.json["child"];
+        _child = widget.model.child;
       }catch(e){
         print(e);
       }

@@ -2,41 +2,48 @@
   "type": "scaffold",
   "args": {
     "app_bar": {
-      "title": "SSR"
+      "title": "Server-Side Render"
     }
   },
   "child": {
-    "type": "column",
-    "children": [
-      {
-        "type": "text",
-        "args": {
-          "text": "Khalid"
-        }
+    "type":"center",
+    "child": {
+      "type": "column",
+      "args":{
+        "main_alignment": "center",
+        "cross_alignment": "center"
       },
-      {
-        "type": "column",
-        "children": [
-          {
-            "type": "text_button",
-            "args": {
-              "title": "Click me 1",
-              "onPressed": {
-                "print": "khalid mohammed"
-              }
-            }
-          },
-          {
-            "type": "text_button",
-            "args": {
-              "title": "Click me 2",
-              "onPressed": {
-                "print": null
-              }
-            }
+      "children": [
+        {
+          "type": "text",
+          "args": {
+            "text": "Numbers"
           }
-        ]
-      }
-    ]
+        },
+        {
+          "type": "column",
+          "children": [
+            {
+              "type": "text_button",
+              "args": {
+                "title": "Click to print 'Number 1'",
+                "on_pressed": {
+                  "print": "Number 1"
+                }
+              }
+            },
+            {
+              "type": "text_button",
+              "args": {
+                "title": "Click to print 'Number 2'",
+                "on_pressed": {
+                  "print": "Number 2"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 }
